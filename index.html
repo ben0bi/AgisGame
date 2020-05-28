@@ -1,0 +1,34 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>Agis Game</title>
+	<meta charset="UTF-8"></meta>
+	<link rel="stylesheet" type="text/css" href="css/root.css">
+</head>
+<body>
+<div id="content">
+<center>
+<h1>Agis Game</h1>
+<div id="pixiwindow"></div>
+</center>
+</div>
+
+<script src="extern/ben0biJSLoader.js"></script>
+<script>
+	function log(txt) {console.log(txt);}
+	function mainloopFrame()
+	{
+		log("looptick");
+	}
+	function jsLoadDone() 
+	{
+		log("done loading.");
+		log("initializing PIXI..")
+		RUNPIXI.initialize("pixiwindow", mainloopFrame)
+	}
+	ben0biJSLoader.recursiveLoad("jsconfig.json",jsLoadDone)
+	
+</script>
+
+</body>
+</html>

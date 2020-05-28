@@ -1,0 +1,9 @@
+#pixiwindow
+{
+	width: 640px;
+	height: 480px;
+	background-color: #696969;
+	
+	border: 1px solid #000069;
+	border-radius: 5px;
+}
