@@ -34,7 +34,7 @@ var aPlayer = function()
 	
 	var m_sprite = "agi";
 	var m_classes = "sprite";
-	var m_direction = "left";
+	var m_direction = "right";
 	var m_dirFrame = 1;
 	// update function
 	this.UPDATE = function()
@@ -46,7 +46,7 @@ var aPlayer = function()
 	{
 		log("Rendering to "+screen);
 		var elem='<div class="'+m_myclass+'" style="top: 10px; left: 10px;"></div>';
-		$(screen).html = elem;
+		$(screen).append(elem);
 	}
 }
 
@@ -67,7 +67,7 @@ var aGame = function()
 	
 	this.UPDATE = function(deltatime)
 	{
-		$(m_screen).html="";
+		$(m_screen).html("");
 		//log("looptick inside game");
 		for(var i=0;i<m_maxplayers;i++)
 		{
