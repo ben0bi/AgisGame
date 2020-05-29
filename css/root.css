@@ -40,132 +40,115 @@ body, html
 	height: 64px;
 }
 
-/*** Rechtes Agi */
+/*** Ein Agi */
+.agi 
+{	
+	background-image: url('../assets/spritesheet_agi.png');
+/*	border: 1px solid #FF00FF;	*/
+}
 
-.agi_right_1
+/*** Rechtwärtiges Sprite */
+
+.right_1
 {
 	top: 0px;
 	left: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -8 -8;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_right_2
+.right_2
 {
 	top: 0px;
 	left: 64px;
-	background-image: url('../assets/spritesheet_agi.png');
-	background-position: -72 -8;
+	background-position: -76 -8;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_right_3
+.right_3
 {
 	top: 0px;
 	left: 128px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -152 -8;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-/***** Linkes Agi */
+/***** Linkwärtiges Sprite */
 
-.agi_left_1
+.left_1
 {
 	top: 0px;
 	right: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -8 -80;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_left_2
+.left_2
 {
 	top: 0px;
 	right: 64px;
-	background-image: url('../assets/spritesheet_agi.png');
-	background-position: -72 -80;
+	background-position: -76 -80;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_left_3
+.left_3
 {
 	top: 0px;
 	right: 128px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -152 -80;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-/*** Abwärtiges Agi */
+/*** Abwärtiges Sprite */
 
-.agi_down_1
+.down_1
 {
 	top: 64px;
 	right: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -8 -152;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_down_2
+.down_2
 {
 	top: 128px;
 	right: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
-	background-position: -72 -152;
+	background-position: -76 -152;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_down_3
+.down_3
 {
 	top: 196px;
 	right: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -152 -152;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
 
-/*** Aufwärtiges Agi */
+/*** Aufwärtiges Sprite */
 
-.agi_up_1
+.up_1
 {
 	top: 64px;
 	left: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -8 -224;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_up_2
+.up_2
 {
 	top: 128px;
 	left: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
-	background-position: -72 -224;
+	background-position: -76 -224;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
-.agi_up_3
+.up_3
 {
 	top: 196px;
 	left: 0px;
-	background-image: url('../assets/spritesheet_agi.png');
 	background-position: -152 -224;
 	background-size: 400% auto;
-/*	border: 1px solid #FF00FF;*/
 }
 
