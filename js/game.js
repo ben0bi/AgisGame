@@ -20,33 +20,33 @@ by Benedict Jäggi 2020
 
 */
 
+
+// ***************************** OLD
+
 var aPlayer = function()
 {
 	var me = this; // prevent sub functions from getting this-ed.
-	var m_target = null;
 	// lebenspunkte
 	var LP = 12; // make hearts, not war. Zelda hearts.
 	this.getLP = function() {return LP;}
 	this.addLP = function(value) {LP+=value;return LP;}
 	this.setLP = function(value) {LP=value;return LP;}
+	
+	var m_sprite = "agi";
+	var m_classes = "sprite";
+	var m_direction = "left";
+	var m_dirFrame = 1;
 	// update function
 	this.UPDATE = function()
 	{
-		//log("player looptick");
-		me.think();
-		me.move();
+		m_myclass = m_sprite+" "+m_classes+" "+m_direction+"_"+m_dirFrame;
 	}
 	
-	this.think = function()
+	this.RENDER=function(screen)
 	{
-		if(m_target==null)
-			m_target = me.getNextTarget();
-	}
-	
-	this.getNextTarget = function()
-	{
-		m_target=1;
-		log("GetNextTarget Dummy");
+		log("Rendering to "+screen);
+		var elem='<div class="'+m_myclass+'" style="top: 10px; left: 10px;"></div>';
+		$(screen).html = elem;
 	}
 }
 
@@ -54,22 +54,28 @@ var aGame = function()
 {
 	var m_players = [];
 	var m_maxplayers = 1;
-	this.INIT = function()
+	var m_screen = 0;
+	this.INIT = function(myscreen)
 	{
 		for(var i = 0;i<m_maxplayers;i++)
 		{
 			plr = new aPlayer();
 			m_players.push(plr);
 		}
+		m_screen = myscreen;
 	}
 	
-	this.UPDATE = function()
+	this.UPDATE = function(deltatime)
 	{
+		$(m_screen).html="";
 		//log("looptick inside game");
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
 			p.UPDATE();
+			p.RENDER(m_screen);
 		}
+		
+//		log("TAK");
 	}
 }

@@ -2,7 +2,7 @@ body, html
 {
 	background-image: url('../assets/bg.jpg');
 	background-repeat: repeat;
-	color: #FFEE33;
+	color: #FFAA00;
 	padding: 0px;
 	margin: 0px;
 }
@@ -44,111 +44,32 @@ body, html
 .agi 
 {	
 	background-image: url('../assets/spritesheet_agi.png');
+	background-size: 400% auto;
 /*	border: 1px solid #FF00FF;	*/
 }
 
-/*** Rechtwärtiges Sprite */
+/*** Rechtwärtiges Sprite für 16x16 zu 64x64 */
 
-.right_1
-{
-	top: 0px;
-	left: 0px;
-	background-position: -8 -8;
-	background-size: 400% auto;
-}
+.right_1 {background-position: -8 -8;}
+.right_2 {background-position: -76 -8;}
+.right_3 {background-position: -152 -8;}
 
-.right_2
-{
-	top: 0px;
-	left: 64px;
-	background-position: -76 -8;
-	background-size: 400% auto;
-}
+/***** Linkwärtiges Sprite für 16x16 zu 64x64 */
 
-.right_3
-{
-	top: 0px;
-	left: 128px;
-	background-position: -152 -8;
-	background-size: 400% auto;
-}
+.left_1 {background-position: -8 -80;}
+.left_2 {background-position: -76 -80;}
+.left_3 {background-position: -152 -80;}
 
-/***** Linkwärtiges Sprite */
+/*** Abwärtiges Sprite für 16x16 zu 64x64 */
 
-.left_1
-{
-	top: 0px;
-	right: 0px;
-	background-position: -8 -80;
-	background-size: 400% auto;
-}
-
-.left_2
-{
-	top: 0px;
-	right: 64px;
-	background-position: -76 -80;
-	background-size: 400% auto;
-}
-
-.left_3
-{
-	top: 0px;
-	right: 128px;
-	background-position: -152 -80;
-	background-size: 400% auto;
-}
-
-/*** Abwärtiges Sprite */
-
-.down_1
-{
-	top: 64px;
-	right: 0px;
-	background-position: -8 -152;
-	background-size: 400% auto;
-}
-
-.down_2
-{
-	top: 128px;
-	right: 0px;
-	background-position: -76 -152;
-	background-size: 400% auto;
-}
-
-.down_3
-{
-	top: 196px;
-	right: 0px;
-	background-position: -152 -152;
-	background-size: 400% auto;
-}
+.down_1{background-position: -8 -152;}
+.down_2 {background-position: -76 -152;}
+.down_3 {background-position: -152 -152;}
 
 
-/*** Aufwärtiges Sprite */
+/*** Aufwärtiges Sprite für 16x16 zu 64x64 */
 
-.up_1
-{
-	top: 64px;
-	left: 0px;
-	background-position: -8 -224;
-	background-size: 400% auto;
-}
-
-.up_2
-{
-	top: 128px;
-	left: 0px;
-	background-position: -76 -224;
-	background-size: 400% auto;
-}
-
-.up_3
-{
-	top: 196px;
-	left: 0px;
-	background-position: -152 -224;
-	background-size: 400% auto;
-}
+.up_1 {background-position: -8 -224;}
+.up_2 {background-position: -76 -224;}
+.up_3 {background-position: -152 -224;}
 

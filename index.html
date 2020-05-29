@@ -10,21 +10,23 @@
 <h1>Agis Game</h1>
 <center>
 <div id="pixiwindow">
-	<div class="agi right_1 sprite"></div>
-	<div class="agi right_2 sprite"></div>
-	<div class="agi right_3 sprite"></div>
+<!--
+	<div class="agi sprite right_1"></div>
+	<div class="agi sprite right_2"></div>
+	<div class="agi sprite right_3"></div>
 
-	<div class="agi left_1 sprite"></div>
-	<div class="agi left_2 sprite"></div>
-	<div class="agi left_3 sprite"></div>
+	<div class="agi sprite left_1"></div>
+	<div class="agi sprite left_2"></div>
+	<div class="agi sprite left_3"></div>
 
-	<div class="agi down_1 sprite"></div>
-	<div class="agi down_2 sprite"></div>
-	<div class="agi down_3 sprite"></div>
+	<div class="agi sprite down_1"></div>
+	<div class="agi sprite down_2"></div>
+	<div class="agi sprite down_3"></div>
 
-	<div class="agi up_1 sprite"></div>
-	<div class="agi up_2 sprite"></div>
-	<div class="agi up_3 sprite"></div>
+	<div class="agi sprite up 1"></div>
+	<div class="agi sprite up 2"></div>
+	<div class="agi sprite up_3"></div>
+-->
 </div>
 </center>
 </div>
@@ -35,6 +37,7 @@
 	function log(txt) {console.log(txt);}
 	function mainloopFrame(deltatime)
 	{
+		g_game.UPDATE(deltatime);
 		//console.log("TIC: "+deltatime);
 	}
 	
@@ -43,7 +46,7 @@
 		log("[ OK ] All JS Files Loaded.");
 		log("--> Init game");
 		g_game=new aGame();
-		g_game.INIT();
+		g_game.INIT('#pixiscreen');
 		log("--> initializing game engine..");
 		var done=false;
 		var deltatime =0.0;
