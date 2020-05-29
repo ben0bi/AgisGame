@@ -136,6 +136,8 @@ var RUNPIXI = function()
 			_PIXIDOMScreen = document.getElementById(pixicontainerID);
 			_PIXIWidth = _PIXIDOMScreen.clientWidth;
 			_PIXIHeight = _PIXIDOMScreen.clientHeight;
+			
+			RPlog("[>GET] Screen size for PIXI: "+_PIXIWidth+"x"+_PIXIHeight);
 
 			// set background color.
 			var transpar = false;
@@ -240,7 +242,7 @@ PIXI.setDefaultBackgroundColor = RUNPIXI.setDefaultBackgroundColor =  function(h
 PIXI.RunningRenderer = RUNPIXI.RENDERER = RUNPIXI.instance.RENDERER;
 // Get the screen size directly in Pixi.
 PIXI.getScreenSize = RUNPIXI.getScreenSize = RUNPIXI.instance.getScreenSize;
-PIXI.RUN = PIXI.initScreen = RUNPIXI.RUN = function(pixicontainerID, mainLoopFunction, backgroundColor=null) 
+PIXI.RUN = PIXI.initScreen = RUNPIXI.RUN = RUNPIXI.initialize = function(pixicontainerID, mainLoopFunction, backgroundColor=null) 
 {
 	RUNPIXI.instance.setOnFrameUpdateFunction(mainLoopFunction);
 	if(backgroundColor)

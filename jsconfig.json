@@ -1,6 +1,6 @@
 {
 	"jquery": "extern/jquery-3.5.1.min.js",
 	"pixijs": "extern/pixi.min.js",
-	"RUN PIXI": "extern/RUNPIXI.js",
+	"RUN PIXI": "extern/RUNPIXI_B.js",
 	"The Game": "js/game.js"
 }

@@ -28,8 +28,8 @@
 		log("init game");
 		g_game=new aGame();
 		g_game.INIT();
-		log("initializing PIXI..")
-		RUNPIXI.initialize("pixiwindow", mainloopFrame)
+		log("initializing PIXI..");
+		PIXI.RUN("pixiwindow", mainloopFrame, 0xFF0000);
 	}
 	ben0biJSLoader.recursiveLoad("jsconfig.json",jsLoadDone)
 	
