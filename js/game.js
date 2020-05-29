@@ -1,0 +1,59 @@
+/*
+
+******************************
+*         Agis Game          *
+*    A game dedicated to     *
+*       Agnaldo Fuhrer       *
+*   my best living friend    *
+* who's got lost in my sight *
+* Hope I'll find him again.  *
+******************************
+ ___________________________
+/                           \
+| o        S' GIT         o |
+|   Solothurn & Grenchen    |
+|       Institutes of       |
+| o   gaming Technology   o |
+\___________________________/
+
+by Benedict Jäggi 2020
+
+*/
+
+var aPlayer = function()
+{
+	// lebenspunkte
+	var LP = 12; // make hearts, not war. Zelda hearts.
+	this.getLP = function() {return LP;}
+	this.addLP = function(value) {LP+=value;return LP;}
+	this.setLP = function(value) {LP=value;return LP;}
+	// update function
+	this.UPDATE = function()
+	{
+		//log("player looptick");
+	}
+}
+
+var aGame = function()
+{
+	var m_players = [];
+	var m_maxplayers = 1;
+	this.INIT = function()
+	{
+		for(var i = 0;i<m_maxplayers;i++)
+		{
+			plr = new aPlayer();
+			m_players.push(plr);
+		}
+	}
+	
+	this.UPDATE = function()
+	{
+		//log("looptick inside game");
+		for(var i=0;i<m_maxplayers;i++)
+		{
+			p=m_players[i];
+			p.UPDATE();
+		}
+	}
+}

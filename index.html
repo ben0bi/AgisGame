@@ -15,14 +15,19 @@
 
 <script src="extern/ben0biJSLoader.js"></script>
 <script>
+	var g_game=0;
 	function log(txt) {console.log(txt);}
 	function mainloopFrame()
 	{
-		log("looptick");
+		g_game.UPDATE();
 	}
+	
 	function jsLoadDone() 
 	{
 		log("done loading.");
+		log("init game");
+		g_game=new aGame();
+		g_game.INIT();
 		log("initializing PIXI..")
 		RUNPIXI.initialize("pixiwindow", mainloopFrame)
 	}
