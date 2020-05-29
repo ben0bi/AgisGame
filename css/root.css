@@ -2,9 +2,23 @@ body, html
 {
 	background-image: url('../assets/bg.jpg');
 	background-repeat: repeat;
-	color: #FFAA00;
+	color: #FFFFFA;
 	padding: 0px;
 	margin: 0px;
+}
+
+#title
+{
+	background-color: #FF3300;
+	color: #FFFFFA;
+	width: 200px;
+	border-radius: 10px;
+	border: 4px dotted #FFFFFA;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 20pt;
+	font-weight: bolder;
+	font-family: monospace;
 }
 
 #content
