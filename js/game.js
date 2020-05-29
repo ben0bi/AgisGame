@@ -22,6 +22,8 @@ by Benedict Jäggi 2020
 
 var aPlayer = function()
 {
+	var me = this; // prevent sub functions from getting this-ed.
+	var m_target = null;
 	// lebenspunkte
 	var LP = 12; // make hearts, not war. Zelda hearts.
 	this.getLP = function() {return LP;}
@@ -31,6 +33,20 @@ var aPlayer = function()
 	this.UPDATE = function()
 	{
 		//log("player looptick");
+		me.think();
+		me.move();
+	}
+	
+	this.think = function()
+	{
+		if(m_target==null)
+			m_target = me.getNextTarget();
+	}
+	
+	this.getNextTarget = function()
+	{
+		m_target=1;
+		log("GetNextTarget Dummy");
 	}
 }
 

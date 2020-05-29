@@ -1,9 +1,48 @@
+body, html
+{
+	background-image: url('../assets/bg.jpg');
+	background-repeat: repeat;
+	color: #FFEE33;
+}
+
 #pixiwindow
 {
+	position: relative;
 	width: 640px;
 	height: 480px;
-	background-color: #696969;
+	background-color: #00AA00;
 	
-	border: 1px solid #000069;
+	border: 3px solid #003300;
 	border-radius: 5px;
+}
+
+.sprite
+{
+	overflow: hidden;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	width: 64px;
+	height: 64px;
+}
+
+.agi_right_1
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -8 -8;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_right_2
+{
+	position: absolute;
+	top: 0px;
+	left: 64px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -72 -8;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
 }

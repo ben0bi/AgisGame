@@ -10,26 +10,31 @@
 <center>
 <h1>Agis Game</h1>
 <div id="pixiwindow"></div>
+	<div class="agi_right_1 sprite"></div>
+	<div class="agi_right_2 sprite"></div>
 </center>
+</div>
 </div>
 
 <script src="extern/ben0biJSLoader.js"></script>
 <script>
 	var g_game=0;
 	function log(txt) {console.log(txt);}
-	function mainloopFrame()
+	function mainloopFrame(deltatime)
 	{
-		g_game.UPDATE();
+		//console.log("TIC: "+deltatime);
 	}
 	
 	function jsLoadDone() 
 	{
-		log("done loading.");
-		log("init game");
+		log("[ OK ] All JS Files Loaded.");
+		log("--> Init game");
 		g_game=new aGame();
 		g_game.INIT();
-		log("initializing PIXI..");
-		PIXI.RUN("pixiwindow", mainloopFrame, 0xFF0000);
+		log("--> initializing game engine..");
+		var done=false;
+		var deltatime =0.0;
+		g_gameengine.INIT(mainloopFrame);
 	}
 	ben0biJSLoader.recursiveLoad("jsconfig.json",jsLoadDone)
 	
