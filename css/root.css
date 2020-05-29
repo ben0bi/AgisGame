@@ -3,11 +3,25 @@ body, html
 	background-image: url('../assets/bg.jpg');
 	background-repeat: repeat;
 	color: #FFEE33;
+	padding: 0px;
+	margin: 0px;
+}
+
+#content
+{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
 }
 
 #pixiwindow
 {
 	position: relative;
+	top: 0px;
+	left: 0px;
 	width: 640px;
 	height: 480px;
 	background-color: #00AA00;
@@ -18,6 +32,7 @@ body, html
 
 .sprite
 {
+	position: absolute;
 	overflow: hidden;
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
@@ -25,9 +40,10 @@ body, html
 	height: 64px;
 }
 
+/*** Rechtes Agi */
+
 .agi_right_1
 {
-	position: absolute;
 	top: 0px;
 	left: 0px;
 	background-image: url('../assets/spritesheet_agi.png');
@@ -38,7 +54,6 @@ body, html
 
 .agi_right_2
 {
-	position: absolute;
 	top: 0px;
 	left: 64px;
 	background-image: url('../assets/spritesheet_agi.png');
@@ -46,3 +61,111 @@ body, html
 	background-size: 400% auto;
 /*	border: 1px solid #FF00FF;*/
 }
+
+.agi_right_3
+{
+	top: 0px;
+	left: 128px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -152 -8;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+/***** Linkes Agi */
+
+.agi_left_1
+{
+	top: 0px;
+	right: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -8 -80;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_left_2
+{
+	top: 0px;
+	right: 64px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -72 -80;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_left_3
+{
+	top: 0px;
+	right: 128px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -152 -80;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+/*** Abwärtiges Agi */
+
+.agi_down_1
+{
+	top: 64px;
+	right: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -8 -152;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_down_2
+{
+	top: 128px;
+	right: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -72 -152;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_down_3
+{
+	top: 196px;
+	right: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -152 -152;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+
+/*** Aufwärtiges Agi */
+
+.agi_up_1
+{
+	top: 64px;
+	left: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -8 -224;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_up_2
+{
+	top: 128px;
+	left: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -72 -224;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
+.agi_up_3
+{
+	top: 196px;
+	left: 0px;
+	background-image: url('../assets/spritesheet_agi.png');
+	background-position: -152 -224;
+	background-size: 400% auto;
+/*	border: 1px solid #FF00FF;*/
+}
+
