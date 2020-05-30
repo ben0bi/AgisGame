@@ -48,11 +48,11 @@
 		log("[ OK ] All JS Files Loaded.");
 		log("--> Init game");
 		g_game=new aGame();
-		g_game.INIT('#pixiwindow');
+		g_game.INIT();
 		log("--> initializing game engine..");
 		var done=false;
 		var deltatime =0.0;
-		g_gameengine.INIT(mainloopFrame);
+		g_gameengine.INIT('#pixiwindow',mainloopFrame);
 	}
 	ben0biJSLoader.recursiveLoad("jsconfig.json",jsLoadDone)
 	

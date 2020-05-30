@@ -72,9 +72,8 @@ var aCharacter = function()
 			m_frameChange=0;
 	}
 	
-	this.RENDER=function(screen)
+	this.RENDER=function()
 	{
-		log("Rendering to "+screen);
 		// translate direction
 		switch(m_direction)
 		{
@@ -94,7 +93,8 @@ var aCharacter = function()
 		m_myclass = m_sprite+" "+m_classes+" "+m_dirname+"_"+m_dirFrame;
 		// create element and append it to the screen.
 		var elem='<div class="'+m_myclass+'" style="top: '+m_y+'px; left: '+m_x+'px;"></div>';
-		$(screen).append(elem);
+		log("Rendering to "+g_gameengine.getActualDisplayID());
+		$(g_gameengine.getActualDisplayID()).append(elem);
 	}
 }
 
@@ -115,13 +115,12 @@ var aGame = function()
 	
 	this.UPDATE = function(deltatime)
 	{
-		$(m_screen).html("");
 		//log("looptick inside game");
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
 			p.UPDATE(deltatime);
-			p.RENDER(m_screen);
+			p.RENDER();
 		}
 		
 //		log("TAK");
