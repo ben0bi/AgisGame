@@ -70,7 +70,11 @@ var aCharacter = function()
 		// reset framechange
 		if(m_frameChange >= m_maxFrameChange)
 			m_frameChange=0;
-
+	}
+	
+	this.RENDER=function(screen)
+	{
+		log("Rendering to "+screen);
 		// translate direction
 		switch(m_direction)
 		{
@@ -86,12 +90,9 @@ var aCharacter = function()
 				m_direction=1; // set default direction if there is a mess 
 				m_dirname="right";break;
 		}
+		// set new class
 		m_myclass = m_sprite+" "+m_classes+" "+m_dirname+"_"+m_dirFrame;
-	}
-	
-	this.RENDER=function(screen)
-	{
-		log("Rendering to "+screen);
+		// create element and append it to the screen.
 		var elem='<div class="'+m_myclass+'" style="top: '+m_y+'px; left: '+m_x+'px;"></div>';
 		$(screen).append(elem);
 	}
