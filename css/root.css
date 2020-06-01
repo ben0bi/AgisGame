@@ -69,15 +69,15 @@ body, html
 	overflow: hidden;
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
-	width: 64px;
-	height: 64px;
 }
 
 /*** Ein Agi */
 .agi 
 {	
-	background-image: url('../assets/spritesheet_agi.png');
+	background-image: url('../images/spritesheet_agi.png');
 	background-size: 400% auto;
+	width: 64px;
+	height: 64px;
 /*	border: 1px solid #FF00FF;	*/
 }
 
@@ -99,10 +99,26 @@ body, html
 .down_2 {background-position: -76 -152;}
 .down_3 {background-position: -152 -152;}
 
-
 /*** Aufwärtiges Sprite für 16x16 zu 64x64 */
 
 .up_1 {background-position: -8 -224;}
 .up_2 {background-position: -76 -224;}
 .up_3 {background-position: -152 -224;}
 
+
+/**** Ein Herz-Sprite */
+.heart
+{
+	background-image:url('../images/spritesheet_hearts.png');
+	background-size: 500% auto;
+	border: 1px solid #FF00FF;
+	/* Image size is 12x12px */
+	width: 48px;
+	height: 48px;
+}
+
+.empty {background-position: 0 0;}
+.f1 {background-position: -48 0;}
+.half {background-position: -96 0;}
+.f3 {background-position: -144 0}
+.full {background-position: -192 0}
