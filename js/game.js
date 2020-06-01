@@ -36,6 +36,9 @@ var aCharacter = function()
 	// x and y position of the player.
 	var m_x = 10;
 	var m_y = 20;
+	var m_w = 64; // width and height of this character
+	var m_h = 64;
+	
 	var m_speed = 250;
 	// sprite name
 	var m_sprite = "agi";
@@ -64,7 +67,7 @@ var aCharacter = function()
 	
 	// update function
 	this.UPDATE = function(deltatime)
-	{
+	{		
 		// maybe get the keys
 		if(me.isRealPlayer==1)
 		{
@@ -149,6 +152,9 @@ var aCharacter = function()
 	
 	this.move = function(direction,deltatime)
 	{	
+		var dw=g_gameengine.getActualDisplayWidth();
+		var dh=g_gameengine.getActualDisplayHeight();
+		log("DW:"+dw+" DH:"+dh);
 		var speed = m_speed * deltatime;
 		// maybe set state to moving.
 		if(m_STATE==cSTATE_STANDING && direction>0)
@@ -174,6 +180,19 @@ var aCharacter = function()
 				// set state to standing
 			default: break;
 		}
+		
+		// constrain the character to the display borders.	
+		
+		// upper left
+		if(m_x<=0-(m_w*0.5))
+			m_x=0-parseInt(m_w*0.5);
+		if(m_y<=0-(m_h*0.5))
+			m_y=0-parseInt(m_h*0.5);
+		// lower right	TODO: SOMETHING IS WRONG HERE !!!!!!!!!!!!!!!!!!!!!!!!	
+		if(m_x+(m_w*0.5)>=dw)
+			m_x=parseInt(dw-(m_w*0.5));
+		if(m_y+(m_h*0.5)>=dh)
+			m_y=parseInt(dh-(m_h*0.5));
 	}
 	
 	this.RENDER=function()
@@ -211,8 +230,10 @@ var aGame = function()
 	var m_players = [];
 	var m_maxplayers = 1;
 	var m_screen = 0;
+	// intialize the game.
 	this.INIT = function(myscreen)
 	{
+		m_players = [];
 		for(var i = 0;i<m_maxplayers;i++)
 		{
 			plr = new aCharacter();
@@ -222,17 +243,15 @@ var aGame = function()
 		m_screen = myscreen;
 	}
 	
+	// the update function gets called each frame.
 	this.UPDATE = function(deltatime)
 	{
-		//log("looptick inside game");
-				
+		//log("looptick inside game");				
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
 			p.UPDATE(deltatime);
 			p.RENDER();
 		}
-		
-//		log("TAK");
 	}
 }

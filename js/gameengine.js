@@ -62,9 +62,9 @@ var GE = function()
 		m_myInterval = setInterval(GE.tick,10);
 		log("[ OK ] Game Engine GE initialized.")
 		
-		// add the two buffer displays        absolute       100         100
-		var html='<div id="GEdiBuf0" style="position:absolute; width:100%; height:100%; top:0px; left:0px;"></div>';
-		html+='<div id="GEdiBuf1" style="position:absolute; width:100%; height:100%;  top:0px; left:0px;"></div>';
+		// add the two buffer displays        absolute       640px         480px
+		var html='<div id="GEdiBuf0" style="position:absolute; width:640px; height:480px; top:0px; left:0px;"></div>';
+		html+='<div id="GEdiBuf1" style="position:absolute; width:640px; height:480px;  top:0px; left:0px;"></div>';
 		$(m_mainDisplayID).append(html);
 		
 		// init keycodes list
@@ -84,7 +84,7 @@ var GE = function()
 	var __keydownfunc=function(evt)
 	{
 		var c = evt.keyCode;
-		log("keydown "+c);
+		//log("keydown "+c);
 		ma_keyCode[c]=1
 	}
 	
@@ -92,7 +92,7 @@ var GE = function()
 	var __keyupfunc=function(evt)
 	{
 		var c = evt.keyCode;
-		log("keyup "+c);
+		//log("keyup "+c);
 		ma_keyCode[c]=0
 	}
 
@@ -114,6 +114,9 @@ var GE = function()
 	
 	// clear the actual display buffer.
 	this.clearActualDisplay = function() {$(m_actualDisplayID).html("");}
+	// get width and height of display.
+	this.getActualDisplayWidth = function() {return $(m_actualDisplayID).width();}
+	this.getActualDisplayHeight = function() {return $(m_actualDisplayID).height();}
 	
 	this.UPDATE = function()
 	{

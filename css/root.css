@@ -42,17 +42,25 @@ body, html
 	
 	border: 3px solid #003300;
 	border-radius: 5px;
-}
+	overflow: hidden;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;}
 
 /* set borders here to view the different buffers. */
 #GEdiBuf0
 {
 	/* border: 1px solid #FF0000; */
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	overflow: hidden;
 }
 
 #GEdiBuf1
 {
 	/* border: 1px solid #0000FF; */
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	overflow: hidden;
 }
 
 .sprite
