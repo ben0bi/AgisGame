@@ -28,10 +28,18 @@ var aCharacter = function()
 {
 	var me = this; // prevent sub functions from getting this-ed.
 	// lebenspunkte
-	var LP = 12; // make hearts, not war. Zelda hearts.
-	this.getLP = function() {return LP;}
-	this.addLP = function(value) {LP+=value;return LP;}
-	this.setLP = function(value) {LP=value;return LP;}
+	var m_LP = 10; // make hearts, not war. Zelda hearts.
+	var m_maxLP = 12; // a heart gets 4 LP.
+	this.getLP = function() {return m_LP;}
+	this.addLP = function(value) {m_LP+=value;__constrainLP();return m_LP;}
+	this.setLP = function(value) {m_LP=value;__constrainLP();return m_LP;}
+	var __constrainLP = function()
+	{
+		if(m_LP>m_maxLP)
+			m_LP = m_maxLP;
+		if(m_LP<0)
+			m_LP = 0;
+	}
 	
 	// x and y position of the player.
 	var m_x = 10;
@@ -58,12 +66,43 @@ var aCharacter = function()
 	var m_frameChange = 0.0; // time until next frame change.
 	var m_maxFrameChange = 0.15 // wait so long for next frame change.
 	var m_STATE = cSTATE_STANDING; // 0 = standing, 1 = moving
-	this.setState=function(newstate)
-	{
-		m_STATE=newstate;
-	}
+	this.setState=function(newstate) {m_STATE=newstate;}
 	// is this a real player which is connected to key or network events?
-	this.isRealPlayer = false;
+	this.isRealPlayer = 0; // 0 = npc
+
+	// render the hearts of this player.
+	this.RENDERhearts=function()
+	{
+		var maxhearts=parseInt(m_maxLP*0.25); // heart has 4 states and empty state.
+		var fullhearts = parseInt(m_LP*0.25)-1;
+		var hx=0;
+		for(var i=0;i<maxhearts;i++)
+		{	
+			var status = "empty";
+			if(i<=fullhearts)
+			{	status = "full";
+			}else{
+				if(i>fullhearts && i<=parseInt(m_LP*0.25))
+				{
+					var q=m_LP%4;
+					switch(q)
+					{
+						case 1: status="f1";break;
+						case 2: status="half"; break;
+						case 3: status="f3"; break;
+						default:
+							status="empty";break;
+					}
+				}
+			}
+			hx=i*32+4;
+			// set new class
+			m_myclass = "heart sprite";
+			// create element and append it to the screen.
+			var elem='<div class="'+m_myclass+' '+status+'" style="top: 4px; left: '+hx+'px;"></div>';
+			$(g_gameengine.getActualDisplayID()).append(elem);
+		}
+	}
 	
 	// update function
 	this.UPDATE = function(deltatime)
@@ -124,6 +163,8 @@ var aCharacter = function()
 				me.setState(cSTATE_MOVING);
 			} 
 		}
+
+		// check the state and do something.
 		m_frameChange+=deltatime;
 		switch(m_STATE)
 		{
@@ -150,6 +191,7 @@ var aCharacter = function()
 			m_frameChange=0;
 	}
 	
+	// move the character in a specific direction.
 	this.move = function(direction,deltatime)
 	{	
 		var dw=g_gameengine.getActualDisplayWidth();
@@ -195,6 +237,7 @@ var aCharacter = function()
 			m_y=parseInt(dh-(m_h*0.5));
 	}
 	
+	// render the character
 	this.RENDER=function()
 	{
 		// translate direction
@@ -253,5 +296,9 @@ var aGame = function()
 			p.UPDATE(deltatime);
 			p.RENDER();
 		}
+		
+		// show the hearts of the first player.
+		if(m_maxplayers>0)
+			m_players[0].RENDERhearts();
 	}
 }

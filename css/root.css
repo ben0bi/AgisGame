@@ -111,14 +111,14 @@ body, html
 {
 	background-image:url('../images/spritesheet_hearts.png');
 	background-size: 500% auto;
-	border: 1px solid #FF00FF;
+	/*border: 1px solid #FF00FF;*/
 	/* Image size is 12x12px */
-	width: 48px;
-	height: 48px;
+	width: 32px;
+	height: 32px;
 }
 
 .empty {background-position: 0 0;}
-.f1 {background-position: -48 0;}
-.half {background-position: -96 0;}
-.f3 {background-position: -144 0}
-.full {background-position: -192 0}
+.f1 {background-position: -32 0;}
+.half {background-position: -64 0;}
+.f3 {background-position: -96 0}
+.full {background-position: -128 0}
