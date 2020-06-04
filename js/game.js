@@ -28,7 +28,7 @@ var aCharacter = function()
 {
 	var me = this; // prevent sub functions from getting this-ed.
 	// lebenspunkte
-	var m_LP = 10; // make hearts, not war. Zelda hearts.
+	var m_LP = 12; // make hearts, not war. Zelda hearts.
 	var m_maxLP = 12; // a heart gets 4 LP.
 	this.getLP = function() {return m_LP;}
 	this.addLP = function(value) {m_LP+=value;__constrainLP();return m_LP;}
@@ -196,7 +196,7 @@ var aCharacter = function()
 	{	
 		var dw=g_gameengine.getActualDisplayWidth();
 		var dh=g_gameengine.getActualDisplayHeight();
-		log("DW:"+dw+" DH:"+dh);
+//		log("DW:"+dw+" DH:"+dh);
 		var speed = m_speed * deltatime;
 		// maybe set state to moving.
 		if(m_STATE==cSTATE_STANDING && direction>0)
@@ -268,11 +268,25 @@ var aCharacter = function()
 	}
 }
 
+var GAMESTATE_PLAY = 1
+var GAMESTATE_MAINMENU = 0
+var GAMESTATE_PAUSE = 2
+var GAMESTATE_EDITOR = 3
+
 var aGame = function()
 {
 	var m_players = [];
 	var m_maxplayers = 1;
 	var m_screen = 0;
+	var m_GAMESTATE = GAMESTATE_EDITOR;
+	
+	// the map to play on.
+	var m_Map = null;
+	this.getMap=function() {return m_Map;}
+	
+	// the editor has its own map.
+	var m_Editor = null;
+	
 	// intialize the game.
 	this.INIT = function(myscreen)
 	{
@@ -280,25 +294,51 @@ var aGame = function()
 		for(var i = 0;i<m_maxplayers;i++)
 		{
 			plr = new aCharacter();
-			plr.isRealPlayer = 1 //0=npc events, 1=key events, 2=network events
+			plr.isRealPlayer = 1; //0=npc events, 1=key events, 2=network events
 			m_players.push(plr);
 		}
 		m_screen = myscreen;
+
+		// initialize a blank map.
+		m_Map=new aGameMap();		
 	}
 	
 	// the update function gets called each frame.
 	this.UPDATE = function(deltatime)
 	{
-		//log("looptick inside game");				
+		// go through the states and update
+		// the editor or game or something.
+		switch(m_GAMESTATE)
+		{
+			case GAMESTATE_PLAY:
+				if(m_Map!=null)
+				{
+					m_Map.UPDATE(deltatime);
+					m_Map.RENDER();
+				}
+				// show the hearts of the first player.
+				if(m_maxplayers>0)
+					m_players[0].RENDERhearts();
+
+				break;
+			case GAMESTATE_EDITOR:
+				if(m_Editor==null)
+					m_Editor=new aMapEditor(m_Map);
+				// map gets update inside editor.
+				m_Editor.UPDATE(deltatime);
+				m_Editor.RENDER();
+				break;
+			default:
+				break;
+		}
+	
+		//log("looptick inside game");
+		// update the players.							
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
 			p.UPDATE(deltatime);
 			p.RENDER();
 		}
-		
-		// show the hearts of the first player.
-		if(m_maxplayers>0)
-			m_players[0].RENDERhearts();
 	}
 }

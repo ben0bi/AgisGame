@@ -78,6 +78,7 @@ body, html
 	background-size: 400% auto;
 	width: 64px;
 	height: 64px;
+	z-index: 100;
 /*	border: 1px solid #FF00FF;	*/
 }
 
@@ -115,6 +116,7 @@ body, html
 	/* Image size is 12x12px */
 	width: 32px;
 	height: 32px;
+	z-index: 200;
 }
 
 .empty {background-position: 0 0;}
@@ -122,3 +124,15 @@ body, html
 .half {background-position: -64 0;}
 .f3 {background-position: -96 0}
 .full {background-position: -128 0}
+
+/**** Ein default tile für den map editor. */
+.tile_default
+{
+	background-image:url('../images/tile_default.png');
+	background-size: 400% auto;
+	/*border: 1px solid #FF00FF;*/
+	/* Image size is 16x16px */
+	width: 64px;
+	height: 64px;
+	
+}
