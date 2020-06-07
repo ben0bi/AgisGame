@@ -2,6 +2,7 @@
 	"jquery": "extern/jquery-3.5.1.min.js",
 	"jBash": "extern/jBash.js",
 	"Game Engine": "js/gameengine.js",
+	"Game Character": "js/gamecharacter.js",
 	"Game Map / Editor": "js/gamemap.js",
 	"The Game": "js/game.js"
 }

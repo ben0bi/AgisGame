@@ -13,32 +13,35 @@
 <br />
 
 <!--
-<div class="heart empty sprite"></div>
-<div class="heart f1 sprite"></div>
-<div class="heart half sprite"></div>
-<div class="heart f3 sprite"></div>
-<div class="heart full sprite"></div>
+> sprites
+sprite heart empty
+sprite heart f1
+sprite heart half
+sprite heart f3
+sprite heart full
+
+sprite agi right_1
+sprite agi right_2
+sprite agi right_3
+
+sprite agi left_1
+sprite agi left_2
+sprite agi left_3
+
+sprite agi down_1
+sprite agi down_2
+sprite agi down_3
+
+sprite agi up_1
+sprite agi up_2
+sprite agi up_3
+-->
+
 -->
 
 <div id="pixiwindow">
-<!--
-	<div class="agi sprite right_1"></div>
-	<div class="agi sprite right_2"></div>
-	<div class="agi sprite right_3"></div>
-
-	<div class="agi sprite left_1"></div>
-	<div class="agi sprite left_2"></div>
-	<div class="agi sprite left_3"></div>
-
-	<div class="agi sprite down_1"></div>
-	<div class="agi sprite down_2"></div>
-	<div class="agi sprite down_3"></div>
-
-	<div class="agi sprite up 1"></div>
-	<div class="agi sprite up 2"></div>
-	<div class="agi sprite up_3"></div>
--->
 </div>
+
 </center>
 </div>
 
@@ -55,6 +58,8 @@
 	function jsLoadDone() 
 	{
 		log("[ OK ] All JS Files Loaded.");
+		log("--> Init jBash");
+		//jBash.initialize("#jBashWindow","#jBashInput");
 		log("--> Init game");
 		g_game=new aGame();
 		g_game.INIT();
