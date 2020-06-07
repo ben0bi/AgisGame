@@ -95,7 +95,7 @@ var aCharacter = function()
 					}
 				}
 			}
-			hx=i*32+4;
+			hx=i*38+4;
 			// set new class
 			m_myclass = "heart sprite";
 			// create element and append it to the screen.
@@ -278,7 +278,7 @@ var aGame = function()
 	var m_players = [];
 	var m_maxplayers = 1;
 	var m_screen = 0;
-	var m_GAMESTATE = GAMESTATE_EDITOR;
+	var m_GAMESTATE = GAMESTATE_PLAY;
 	
 	// the map to play on.
 	var m_Map = null;
