@@ -15,10 +15,11 @@ Basic game-engine functions:
 */
 
 // general log function
-var log = function(txt)
-{
-	console.log(txt);
-}
+// NEW: Using the one from the GIMLI-parser.
+//var log = function(txt)
+//{
+//	console.log(txt);
+//}
 
 // https://keycode.info/
 // standard key codes.

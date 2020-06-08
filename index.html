@@ -57,9 +57,15 @@ sprite agi up_3
 	
 	function jsLoadDone() 
 	{
-		log("[ OK ] All JS Files Loaded.");
-		log("--> Init jBash");
+		log("[ OK ] All JS files loaded.");
+		log("--> Loading GML..");
 		//jBash.initialize("#jBashWindow","#jBashInput");
+		PARSEGMLFILE("gml/map1.gml",gmlLoadDone);
+	}
+	
+	function gmlLoadDone()
+	{
+		log("[ OK ] All GML files loaded.");
 		log("--> Init game");
 		g_game=new aGame();
 		g_game.INIT();
