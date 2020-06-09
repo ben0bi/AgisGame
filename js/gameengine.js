@@ -66,10 +66,15 @@ var GE = function()
 		
 		// add the two buffer displays        absolute       640px         480px
 		var html="";
-		html+='<div id="jbashWindow">Welcome to Agis Game Console.<br/>Type "cmd" for a list of all commmands.<input type="text" id="jbashInput" /></div>' // jbash window is controlled by code and css.
+		html+='<div id="jbashWindow"><div id="jbashConsole">';// jbash window is controlled by code and css.
+		html+='Welcome to Agis Game Console.<br/>Type "cmd" for a list of all commmands.</div>';
+		html+='</div>';
 		html+='<div id="GEdiBuf0" style="position:absolute; width:640px; height:480px; top:0px; left:0px;"></div>';
 		html+='<div id="GEdiBuf1" style="position:absolute; width:640px; height:480px;  top:0px; left:0px;"></div>';
 		$(m_mainDisplayID).append(html);
+		
+		// initialize jBash
+		jBash.initialize("#jbashConsole","#jbashInput")
 		
 		// init keycodes list
 		ma_keyCode=[]
@@ -149,7 +154,7 @@ var GE = function()
 			if(consolepos>0)
 				consolepos=0;
 			$('#jbashWindow').css('top',consolepos+'px');
-			$('#jbashInput').focus();
+			$('#jBashInnerInput').focus();
 		}
 		
 		if(me.isConsole()<=0 && m_consoleruns==1)
@@ -164,7 +169,7 @@ var GE = function()
 			}
 			$('#jbashWindow').css('top',consolepos+'px');
 			//log("HIDE to "+m_mainDisplayID);
-			$('#jbashInput').blur();
+			$('#jBashInnerInput').blur();
 		}
 	}
 }
