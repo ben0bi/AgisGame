@@ -322,7 +322,7 @@ var GMLParser = function()
 	this.parseGML = function(json, rootPath)
 	{
 		// get the gml filename array.
-		log("Parsing GML [Path: "+rootPath+"]"/*+JSON.stringify(json)*/, LOG_DEBUG_VERBOSE);
+		log("Parsing GML [Path: "+rootPath+"]"+JSON.stringify(json), LOG_DEBUG_VERBOSE);
 		
 		log("Converting array names to uppercase..", LOG_DEBUG_VERBOSE);
 		var json2 = __jsonUpperCase(json);

@@ -28,6 +28,7 @@ var KEY_RIGHT=39;
 var KEY_UP=38;
 var KEY_DOWN=40;
 var KEY_SPACE=32;
+var KEY_ESC=27;
 
 var KEY_W=87;
 var KEY_A=65;
@@ -64,7 +65,9 @@ var GE = function()
 		log("[ OK ] Game Engine GE initialized.")
 		
 		// add the two buffer displays        absolute       640px         480px
-		var html='<div id="GEdiBuf0" style="position:absolute; width:640px; height:480px; top:0px; left:0px;"></div>';
+		var html="";
+		html+='<div id="jbashWindow"><input type="text" id="jbashInput" /></div>' // jbash window is controlled by code and css.
+		html+='<div id="GEdiBuf0" style="position:absolute; width:640px; height:480px; top:0px; left:0px;"></div>';
 		html+='<div id="GEdiBuf1" style="position:absolute; width:640px; height:480px;  top:0px; left:0px;"></div>';
 		$(m_mainDisplayID).append(html);
 		
@@ -81,6 +84,11 @@ var GE = function()
 		$("body").on('keyup', __keyupfunc)
 	}
 	
+	// show the console or not. position will be updated in update window.
+	var m_consoleShow=0;
+	this.showConsole=function(show) {m_consoleShow=show;}
+	this.isConsole=function() {return m_consoleShow;}
+	
 	// the key down event handler.
 	var __keydownfunc=function(evt)
 	{
@@ -93,11 +101,17 @@ var GE = function()
 	var __keyupfunc=function(evt)
 	{
 		var c = evt.keyCode;
-		//log("keyup "+c);
+		log("keyup "+c);
 		ma_keyCode[c]=0
+		
+		// maybe show or hide jbash console.
+		if(c==KEY_ESC)
+		{
+			jBash.show(!jBash.isVisible());
+		}
 	}
 
-	this.RENDER = function()
+	this.RENDER = function(deltatime)
 	{
 		// show the actual display.
 		$(m_actualDisplayID).css('display','block');
@@ -119,10 +133,31 @@ var GE = function()
 	this.getActualDisplayWidth = function() {return $(m_actualDisplayID).width();}
 	this.getActualDisplayHeight = function() {return $(m_actualDisplayID).height();}
 	
-	this.UPDATE = function()
+	var m_consoleruns=1;
+	this.UPDATE = function(deltatime)
 	{
 		if(m_updatefunction!=null)
 			m_updatefunction(me.m_deltatime)
+			
+		// maybe show the console or not.
+		var consolepos=parseInt($('#jbashWindow').css('top'));
+		if(me.isConsole()>0 && consolepos<0)
+		{
+			m_consoleruns=1;
+			consolepos+=deltatime*640;
+			if(consolepos>0)
+				consolepos=0;
+			$('#jbashWindow').css('top',consolepos+'px');
+		}
+		
+		if(me.isConsole()<=0 && m_consoleruns==1)
+		{
+			var consoleheight=parseInt($('jbashWindow').height());
+			consolepos-=deltatime*640;
+			if(consolepos<0-consoleheight)
+				consolepos=0-consoleheight;
+			$('#jbashWindow').css('top',consolepos+'px');
+		}
 	}
 }
 
