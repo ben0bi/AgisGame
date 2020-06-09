@@ -66,7 +66,7 @@ var GE = function()
 		
 		// add the two buffer displays        absolute       640px         480px
 		var html="";
-		html+='<div id="jbashWindow"><input type="text" id="jbashInput" /></div>' // jbash window is controlled by code and css.
+		html+='<div id="jbashWindow">Welcome to Agis Game Console.<br/>Type "cmd" for a list of all commmands.<input type="text" id="jbashInput" /></div>' // jbash window is controlled by code and css.
 		html+='<div id="GEdiBuf0" style="position:absolute; width:640px; height:480px; top:0px; left:0px;"></div>';
 		html+='<div id="GEdiBuf1" style="position:absolute; width:640px; height:480px;  top:0px; left:0px;"></div>';
 		$(m_mainDisplayID).append(html);

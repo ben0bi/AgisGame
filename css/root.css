@@ -1,11 +1,20 @@
 body, html
 {
-	background-image: url('../assets/bg.jpg');
+	background-image: url('../data/images/bg.jpg');
 	background-repeat: repeat;
 	color: #FFFFFA;
 	padding: 0px;
 	margin: 0px;
 }
+
+/* NOT WORKING, WHY? */
+/*@fontface
+{
+	font-family: "font_console";
+	src: url('../data/fonts/pcsenior.ttf') format("truetype");
+	
+}
+*/
 
 #title
 {
@@ -53,7 +62,7 @@ body, html
 {
 	position: absolute;
 	width: 100%;
-	background-image:url('../images/transblue_b.png');
+	background-image:url('../data/images/transblue_b.png');
 	background-size: 4px auto;
 /*	border: 1px solid #FF00FF;*/
 	width: 640px;
@@ -62,9 +71,10 @@ body, html
 	image-rendering: crisp-edges;
 	font-size: 12pt;
 	font-weight: bold;
-	font-family: monospace;
+	font-family: 'font_console', monospace;
 	z-index: 10000;
 	color: #FFFFFA;
+	text-align: left;
 }
 
 #jBashInput
@@ -79,9 +89,10 @@ body, html
 	height: 35px;
 	width: 100%;
 	font-size: 12pt;
-	font-family: monospace;
+	font-family: 'font_console', monospace;
 	color: #0000AA;
-	background-image: url('../images/transwhite_b.png'); /* b for block */
+	background-image: url('../data/images/transwhite_b.png'); /* b for block */
+	text-align: left;
 }
 
 /* set borders here to view the different buffers, also inside main window 
@@ -114,7 +125,7 @@ body, html
 /*** Ein Agi */
 .agi 
 {	
-	background-image: url('../images/spritesheet_agi.png');
+	background-image: url('../data/images/spritesheet_agi.png');
 	background-size: 400% auto;
 	width: 64px;
 	height: 64px;
@@ -150,7 +161,7 @@ body, html
 /**** Ein Herz-Sprite */
 .heart
 {
-	background-image:url('../images/spritesheet_hearts.png');
+	background-image:url('../data/images/spritesheet_hearts.png');
 	background-size: 500% auto;
 	/*border: 1px solid #FF00FF;*/
 	/* Image size is 12x12px */
@@ -168,7 +179,7 @@ body, html
 /**** Ein default tile für den map editor. */
 .tile_default
 {
-	background-image:url('../images/tile_default.png');
+	background-image:url('../data/images/tile_default.png');
 	background-size: 400% auto;
 	/*border: 1px solid #FF00FF;*/
 	/* Image size is 16x16px */
