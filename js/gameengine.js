@@ -101,13 +101,13 @@ var GE = function()
 	var __keyupfunc=function(evt)
 	{
 		var c = evt.keyCode;
-		log("keyup "+c);
+		//log("keyup "+c);
 		ma_keyCode[c]=0
 		
 		// maybe show or hide jbash console.
 		if(c==KEY_ESC)
 		{
-			jBash.show(!jBash.isVisible());
+			me.showConsole(Math.abs(me.isConsole()-1));
 		}
 	}
 
@@ -143,20 +143,28 @@ var GE = function()
 		var consolepos=parseInt($('#jbashWindow').css('top'));
 		if(me.isConsole()>0 && consolepos<0)
 		{
+			//log("SHOW CONSOLE "+me.isConsole())
 			m_consoleruns=1;
 			consolepos+=deltatime*640;
 			if(consolepos>0)
 				consolepos=0;
 			$('#jbashWindow').css('top',consolepos+'px');
+			$('#jbashInput').focus();
 		}
 		
 		if(me.isConsole()<=0 && m_consoleruns==1)
 		{
-			var consoleheight=parseInt($('jbashWindow').height());
+			var consoleheight=parseInt($('#jbashWindow').height());
+			//log("HIDE CONSOLE "+me.isConsole()+" / "+consoleheight)
 			consolepos-=deltatime*640;
 			if(consolepos<0-consoleheight)
+			{
 				consolepos=0-consoleheight;
+				m_consoleruns=0;
+			}
 			$('#jbashWindow').css('top',consolepos+'px');
+			//log("HIDE to "+m_mainDisplayID);
+			$('#jbashInput').blur();
 		}
 	}
 }
