@@ -7,15 +7,15 @@ body, html
 	margin: 0px;
 }
 
-/* NOT WORKING, WHY? */
-/*@fontface
+/* FONT NOT WORKING, WHY? */
+@fontface
 {
 	font-family: "font_console";
 	src: url('../data/fonts/pcsenior.ttf') format("truetype");
 	
 }
-*/
 
+/* Title over the main display */
 #title
 {
 	background-color: #FF3300;
@@ -30,6 +30,7 @@ body, html
 	font-family: monospace;
 }
 
+/* This one holds just everything. */
 #content
 {
 	position: absolute;
@@ -68,13 +69,7 @@ body, html
 	width: 640px;
 	height: 350px;
 	z-index: 10000;
-}
-
-#jbashConsole
-{
 	font-family: 'font_console', monospace;
-	position: absolute;
-	width: 100%;
 	height: 350px;
 	overflow-y: scroll;
 	color: #FFFFFA;
