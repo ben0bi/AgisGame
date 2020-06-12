@@ -534,6 +534,10 @@ jBash.LINK = function(params)
 jBash.registerCommand("donate", "Please donate my work. Thank you.", function(params) {jBash.Parse("man donate");});
 jBash.registerCommand("cmd", "Show registered jBash commands.", function(params) 
 	{jBash.instance.showCommandList();});
+jBash.registerCommand("help", "Show registered jBash commands.", function(params) 
+	{jBash.instance.showCommandList();});
+jBash.registerCommand("?", "Show registered jBash commands.", function(params) 
+	{jBash.instance.showCommandList();});
 jBash.registerCommand("man", "Show manual for a command. E.g. {<span class='jBashCmd'>man cmd</span>}", function(params)
 	{
 		var jp = jBash.GP(params);

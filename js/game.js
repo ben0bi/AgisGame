@@ -58,12 +58,30 @@ var aGame = function()
 	}
 	
 	// the update function gets called each frame.
+	var m_old_gamestate=GAMESTATE_MAINMENU;
 	this.UPDATE = function(deltatime)
 	{
+		// switch to pause if console is on.
+		if(GE.isConsole()>0 && m_GAMESTATE!=GAMESTATE_PAUSE)
+		{
+//			log("GAMESTATE PAUSE");
+			m_old_gamestate = m_GAMESTATE;
+			m_GAMESTATE=GAMESTATE_PAUSE;
+		}
+		
+		// switch to old gamestate if console is off.
+		if(GE.isConsole()<=0 && m_GAMESTATE==GAMESTATE_PAUSE)
+		{
+//			log("GAMESTATE OLD: "+m_old_gamestate);
+			m_GAMESTATE=m_old_gamestate;
+		}
+		
 		// go through the states and update
 		// the editor or game or something.
 		switch(m_GAMESTATE)
 		{
+			case GAMESTATE_PAUSE:
+				break;
 			case GAMESTATE_PLAY:
 				if(m_Map!=null)
 				{
@@ -91,7 +109,7 @@ var aGame = function()
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
-			p.UPDATE(deltatime);
+			p.UPDATE(deltatime, m_GAMESTATE);
 			p.RENDER();
 		}
 	}

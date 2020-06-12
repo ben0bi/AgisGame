@@ -74,7 +74,9 @@ var GE = function()
 		$(m_mainDisplayID).append(html);
 		
 		// initialize jBash
-		jBash.initialize("#jbashWindow","#jbashInput")
+		jBash.initialize("#jbashWindow");
+		jBash.instance.AddLine("Welcome to Agis Game Interface.");
+		jBash.instance.AddLine("Type 'cmd' for a list with all commands.");
 		
 		// init keycodes list
 		ma_keyCode=[]

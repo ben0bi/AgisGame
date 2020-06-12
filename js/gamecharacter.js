@@ -107,7 +107,7 @@ var aCharacter = function()
 	}
 	
 	// update function
-	this.UPDATE = function(deltatime)
+	this.UPDATE = function(deltatime, gamestate)
 	{		
 		// maybe get the keys
 		if(me.isRealPlayer==1)
@@ -171,6 +171,13 @@ var aCharacter = function()
 		switch(m_STATE)
 		{
 			case cSTATE_MOVING: //moving
+				// check for real gamestate,
+				// maybe it's all paused.
+				if(gamestate==GAMESTATE_PAUSE)
+				{
+					m_dirFrame=3;
+					return;
+				}
 				// animate
 				if(m_frameChange >= m_maxFrameChange)
 				{
