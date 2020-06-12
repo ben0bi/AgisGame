@@ -2,6 +2,8 @@
 	jBash
 	a little console thingy for JavaScript.
 	needs jQuery.
+	
+	v2 with help and ? commands.
 */
 
 // the directory to the manuals seen from the loading page.
