@@ -35,8 +35,8 @@ var aGame = function()
 	var m_GAMESTATE = GAMESTATE_PLAY;
 	
 	// the map to play on.
-	var m_Map = null;
-	this.getMap=function() {return m_Map;}
+	var m_map = null;
+	this.getMap=function() {return m_map;}
 	
 	// the editor has its own map.
 	var m_Editor = null;
@@ -103,13 +103,22 @@ var aGame = function()
 			default:
 				break;
 		}
-	
+
+		// maybe show map and render it.
+		if(m_map!=null)
+		{
+			if(m_GAMESTATE==GAMESTATE_PLAY || m_GAMESTATE==GAMESTATE_EDITOR)
+				m_map.UPDATE(deltatime);
+			m_map.RENDER();
+		}
+			
 		//log("looptick inside game");
 		// update the players.							
 		for(var i=0;i<m_maxplayers;i++)
 		{
 			p=m_players[i];
-			p.UPDATE(deltatime, m_GAMESTATE);
+			if(m_GAMESTATE==GAMESTATE_PLAY || m_GAMESTATE==GAMESTATE_EDITOR)
+				p.UPDATE(deltatime);
 			p.RENDER();
 		}
 	}

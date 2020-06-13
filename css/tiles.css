@@ -1,0 +1,21 @@
+
+/* standard tile settings. */
+.tile
+{
+	position: absolute;
+	overflow: hidden;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+/**** Ein default tile für den map editor. */
+.ti_default
+{
+	background-image:url('../data/images/tile_default.png');
+	background-size: 100% auto;
+	/*border: 1px solid #FF00FF;*/
+	/* Image size is 16x16px */
+	width: 64px;
+	height: 64px;
+	
+}

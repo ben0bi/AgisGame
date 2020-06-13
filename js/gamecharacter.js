@@ -51,7 +51,7 @@ var aCharacter = function()
 	
 	var m_speed = 250;
 	// sprite name
-	var m_sprite = "agi";
+	var m_sprite = "spr_agi";
 	// additional classes
 	var m_classes = "sprite";
 	// direction class
@@ -99,7 +99,7 @@ var aCharacter = function()
 			}
 			hx=i*38+4;
 			// set new class
-			m_myclass = "heart sprite";
+			m_myclass = "sprite spr_heart";
 			// create element and append it to the screen.
 			var elem='<div class="'+m_myclass+' '+status+'" style="top: 4px; left: '+hx+'px;"></div>';
 			$(g_gameengine.getActualDisplayID()).append(elem);
@@ -107,7 +107,7 @@ var aCharacter = function()
 	}
 	
 	// update function
-	this.UPDATE = function(deltatime, gamestate)
+	this.UPDATE = function(deltatime)
 	{		
 		// maybe get the keys
 		if(me.isRealPlayer==1)
@@ -173,12 +173,12 @@ var aCharacter = function()
 			case cSTATE_MOVING: //moving
 				// check for real gamestate,
 				// maybe it's all paused.
-				if(gamestate==GAMESTATE_PAUSE)
+/*				if(gamestate==GAMESTATE_PAUSE)
 				{
 					m_dirFrame=3;
 					return;
 				}
-				// animate
+*/				// animate
 				if(m_frameChange >= m_maxFrameChange)
 				{
 					m_dirFrame+=1
