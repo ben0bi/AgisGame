@@ -54,7 +54,8 @@ var aGame = function()
 		m_screen = myscreen;
 
 		// initialize a blank map.
-		m_Map=new aGameMap();		
+		m_Map=new aGameMap();
+		m_Map.INIT();
 	}
 	
 	// the update function gets called each frame.
@@ -81,6 +82,8 @@ var aGame = function()
 		switch(m_GAMESTATE)
 		{
 			case GAMESTATE_PAUSE:
+				if(m_Map!=null)
+					m_Map.RENDER();
 				break;
 			case GAMESTATE_PLAY:
 				if(m_Map!=null)
@@ -94,22 +97,9 @@ var aGame = function()
 
 				break;
 			case GAMESTATE_EDITOR:
-				if(m_Editor==null)
-					m_Editor=new aMapEditor(m_Map);
-				// map gets update inside editor.
-				m_Editor.UPDATE(deltatime);
-				m_Editor.RENDER();
 				break;
 			default:
 				break;
-		}
-
-		// maybe show map and render it.
-		if(m_map!=null)
-		{
-			if(m_GAMESTATE==GAMESTATE_PLAY || m_GAMESTATE==GAMESTATE_EDITOR)
-				m_map.UPDATE(deltatime);
-			m_map.RENDER();
 		}
 			
 		//log("looptick inside game");

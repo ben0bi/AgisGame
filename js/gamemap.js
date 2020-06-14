@@ -82,46 +82,71 @@ var aMapTile = function()
 		if(__defined(json['CLASSES']))
 			me.classes = json['CLASSES'];
 	}
+
+	var m_html=""; // html as own variable to safe processor time.	
+	this.UPDATE = function(deltatime)
+	{
+		m_html='<div class="'+me.classes+'" style="top: '+me.posX+'px; left: '+me.posY+'px;"></div>';
+	}
+
+	this.RENDER = function()
+	{
+		$(g_gameengine.getActualDisplayID()).append(m_html);
+	}
 }
 
 // a map holds map tiles with their intern names.
 var aGameMap = function()
 {
 	var me = this;
-	var sizex = 20;
-	var sizey = 20;
+	var m_sizex = 10;
+	var m_sizey = 10;
+	
+	var m_maptiles = [];
+	
+	var m_somethingchanged = false;
 	
 	this.parseGML = function(json, rootPath)
 	{
 		
 	}
 	
+	// this should be in parsegml
+	this.INIT = function()
+	{
+		m_maptiles=[];
+		for(y=0;y<m_sizey;y++)
+		{
+			for(x=0;x<m_sizex;x++)
+			{
+				var maptile = new aMapTile();
+				maptile.posX=x*64;
+				maptile.posY=y*64;
+				maptile.classes = "tile ti_default";
+				maptile.UPDATE();	// update needs to be called once to set html.
+				m_maptiles.push(maptile);
+			}
+		}
+		m_somethingchanged=true;
+		log("[Good] Map Initialized");
+	}
+	
 	this.UPDATE=function(deltatime)
 	{
+		if(m_somethingchanged==false)
+			return;
+		for(var i=0;i<m_maptiles.length;i++)
+			m_maptiles[i].UPDATE(deltatime);
+		m_somethingchanged = false;
 	}
 	
 	this.RENDER=function()
 	{
-	
+		var html;
+		for(var i=0;i<m_maptiles.length;i++)
+		{
+			m_maptiles[i].RENDER();
+		}
 	}
 }
 
-var aMapEditor = function(map)
-{
-	var me = this;
-	var m_Map = null;
-	if(map!=null)
-		m_Map=map;
-	else
-		m_Map=new aGameMap();
-		
-	this.UPDATE=function(deltatime)
-	{
-		m_Map.UPDATE();
-	}
-	
-	this.RENDER = function()
-	{
-		m_Map.RENDER();
-	}
-}
