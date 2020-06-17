@@ -6,16 +6,15 @@
 	overflow: hidden;
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
-}
-
-/**** Ein default tile für den map editor. */
-.ti_default
-{
-	background-image:url('../data/images/tile_default.png');
 	background-size: 100% auto;
 	/*border: 1px solid #FF00FF;*/
 	/* Image size is 16x16px */
 	width: 64px;
 	height: 64px;
-	
 }
+
+/**** Ein default tile für den map editor. */
+.ti_default_1 {background-image:url('../data/images/tiles/default/tile_default_1.png');}
+.ti_default_2 {background-image:url('../data/images/tiles/default/tile_default_2.png');}
+.ti_default_3 {background-image:url('../data/images/tiles/default/tile_default_3.png');}
+
