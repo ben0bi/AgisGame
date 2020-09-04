@@ -24,7 +24,7 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 
 	// double buffering.
 	var doubleBufferIndex = 0;		// 0 or 1.
-	var screenArray = [];			// this array holds 2 screen arrays for double buffering.
+//	var screenArray = [];			// this array holds 2 screen arrays for double buffering.
 	
 	// NEW FOR Anpassungen 
 	var g_resizeParameter = 0;		// fit to screen.
@@ -93,7 +93,7 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 		var arr2 = [];
 
 		// create pixels and add them to the containers.
-		for(y=0;y<emuScreenHeight;y++)
+/*		for(y=0;y<emuScreenHeight;y++)
 		{
 			for(x=0;x<emuScreenWidth;x++)
 			{
@@ -112,6 +112,7 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 				arr2.push(pixel2);
 			}
 		}
+*/
 
 		// add the border.
 		bordersprite1.x = -emuBorderWidth;
@@ -132,10 +133,12 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 		EmuGraphicsAdapter.containers = [];
 		EmuGraphicsAdapter.containers.push(container1);
 		EmuGraphicsAdapter.containers.push(container2);
+
+/*
 		screenArray = [];
 		screenArray.push(arr1);
 		screenArray.push(arr2);
-
+*/
 		doubleBufferIndex = 0;
 
 		// add the containers to the pixi stage.
@@ -149,8 +152,8 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 		this.switchBuffers();
 
 		// clear the buffers.
-		fillBuffer(emuBackgroundColor, 0);
-		fillBuffer(emuBackgroundColor, 1);
+//		fillBuffer(emuBackgroundColor, 0);
+//		fillBuffer(emuBackgroundColor, 1);
 
 		console.log("EmuGraphicsAdapter: Screen with size "+emuScreenWidth+"x"+emuScreenHeight+" created (double sized and double buffered).");
 	}
@@ -255,7 +258,7 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 	}
 
 	// fill the whole screen with a specific color.
-	var fillBuffer = function(color, bufferIndex)
+/*	var fillBuffer = function(color, bufferIndex)
 	{
 		if(screenArray[bufferIndex].length<=0)
 			return;
@@ -328,7 +331,7 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 	}
 
 	// ENDOF NEW FOR 2.1_3
-
+*/
 	// initialize the new screen.
 	this.initialize(newwidth, newheight, bgcolor, bordercolor);
 }
