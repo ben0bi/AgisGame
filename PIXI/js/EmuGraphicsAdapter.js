@@ -80,80 +80,32 @@ var EmuGraphicsAdapter = function(newwidth, newheight, bgcolor, bordercolor)
 		var borderTex = gbord.generateCanvasTexture();
 
 		var backgroundsprite1 = new PIXI.Sprite(backgroundTex);
-		var backgroundsprite2 = new PIXI.Sprite(backgroundTex);
 		var bordersprite1 = new PIXI.Sprite(borderTex);
-		var bordersprite2 = new PIXI.Sprite(borderTex);
 
 		// the container holds the whole emulator screen.
 		var container1 = new PIXI.Container();
-		var container2 = new PIXI.Container();
 		container1.addChild(backgroundsprite1);
-		container2.addChild(backgroundsprite2);
 		var arr1 = [];
-		var arr2 = [];
-
-		// create pixels and add them to the containers.
-/*		for(y=0;y<emuScreenHeight;y++)
-		{
-			for(x=0;x<emuScreenWidth;x++)
-			{
-				// double it all for double buffering.
-				var pixel1 = new PIXI.Sprite(EmuGraphicsAdapter.originalPixelTex);
-				pixel1.x = x*2;
-				pixel1.y = y*2;
-
-				var pixel2 = new PIXI.Sprite(EmuGraphicsAdapter.originalPixelTex);
-				pixel2.x = x*2;
-				pixel2.y = y*2;
-
-				container1.addChild(pixel1);
-				container2.addChild(pixel2);
-				arr1.push(pixel1);
-				arr2.push(pixel2);
-			}
-		}
-*/
 
 		// add the border.
 		bordersprite1.x = -emuBorderWidth;
 		bordersprite1.y = -emuBorderWidth;
-		bordersprite2.x = -emuBorderWidth;
-		bordersprite2.y = -emuBorderWidth;
 		container1.addChild(bordersprite1);
-		container2.addChild(bordersprite2);
 		
 		// NEW FOR Anpassungen: Container Anker
 		container1.pivot.x = -emuBorderWidth;
 		container1.pivot.y = -emuBorderWidth;
-		container2.pivot.x = -emuBorderWidth;
-		container2.pivot.y = -emuBorderWidth;
 		// ENDOF NEW FOR Anpassungen
 
 		// add the containers and the screen arrays to the buffer arrays.
 		EmuGraphicsAdapter.containers = [];
 		EmuGraphicsAdapter.containers.push(container1);
-		EmuGraphicsAdapter.containers.push(container2);
-
-/*
-		screenArray = [];
-		screenArray.push(arr1);
-		screenArray.push(arr2);
-*/
-		doubleBufferIndex = 0;
 
 		// add the containers to the pixi stage.
 		PIXIStage.addChild(container1);
-		PIXIStage.addChild(container2);
-
+//
 		// center and scale the containers.
 		this.resize();
-
-		// hide one of the screens.
-		this.switchBuffers();
-
-		// clear the buffers.
-//		fillBuffer(emuBackgroundColor, 0);
-//		fillBuffer(emuBackgroundColor, 1);
 
 		console.log("EmuGraphicsAdapter: Screen with size "+emuScreenWidth+"x"+emuScreenHeight+" created (double sized and double buffered).");
 	}
